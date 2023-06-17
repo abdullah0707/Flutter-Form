@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'style.dart';
-
-// import 'lesson_two.dart';
 
 void main() => runApp(const MyApp());
 
@@ -58,25 +55,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     textColorBtn = textColorBtn == Colors.black
                         ? Colors.white
                         : Colors.black;
-                    // if (themeModeSystem == ThemeMode.dark) {
-                    //   themeModeSystem = ThemeMode.light;
-                    //   iconMode = Icons.dark_mode;
-                    //   iconColor = Colors.blueGrey;
-                    // } else {
-                    //   themeModeSystem = ThemeMode.dark;
-                    //   iconMode = Icons.light_mode;
-                    //   iconColor = Colors.amber;
-                    // }
                   }),
                   icon: Icon(iconMode),
                   color: iconColor,
                 ),
-              ]
-              // actions: const [
-              //   Icon(Icons.night_shelter),
-              //   ButtonBar(Icons.add)
-              // ],
-              ),
+              ]),
           // ignore: avoid_unnecessary_containers
           body: Container(
               child: SingleChildScrollView(
