@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -27,6 +28,25 @@ class _MyHomePageState extends State<MyHomePage> {
   var textColorBtn = Colors.white;
   var myControllaer = TextEditingController();
   var dataInput = 'name';
+
+  void _datePicker() {
+    showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1990),
+      lastDate: DateTime.now(),
+    ).then((value) {
+      if (value != null) {
+        if (kDebugMode) {
+          print(value);
+          print(value);
+        }
+      } else {
+        return;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) => MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -66,6 +86,14 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Column(
               children: [
                 const SizedBox(height: 40),
+                // Image.network(
+                //   'https://cdn-images-1.medium.com/v2/resize:fit:1200/1*5-aoK8IBmXve5whBQM90GA.png',
+                //   height: 150,
+                // ),
+                Image.asset(
+                  'assets/images/icon2.png',
+                  height: 150,
+                ),
                 Container(
                   margin: const EdgeInsets.all(8),
                   child: TextField(
@@ -136,24 +164,42 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.all(8),
-                  child: ElevatedButton(
-                    onPressed: () => setState(() {
-                      dataInput = myControllaer.text;
-                      print(dataInput);
-                    }),
-                    style: const ButtonStyle(
-                      backgroundColor: MaterialStatePropertyAll(Colors.cyan),
-                      padding: MaterialStatePropertyAll(
-                        EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                      ),
-                    ),
-                    child: Text(
-                      'Submit',
-                      style: TextStyle(fontSize: 25, color: textColorBtn),
-                    ),
-                  ),
-                ),
+                    margin: const EdgeInsets.all(8),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                          onPressed: _datePicker,
+                          style: const ButtonStyle(
+                            backgroundColor:
+                                MaterialStatePropertyAll(Colors.cyan),
+                            padding: MaterialStatePropertyAll(
+                              EdgeInsets.symmetric(
+                                  horizontal: 30, vertical: 10),
+                            ),
+                          ),
+                          child: const Icon(Icons.calendar_month),
+                        ),
+                        ElevatedButton(
+                          onPressed: () => setState(() {
+                            dataInput = myControllaer.text;
+                            print(dataInput);
+                          }),
+                          style: const ButtonStyle(
+                            backgroundColor:
+                                MaterialStatePropertyAll(Colors.cyan),
+                            padding: MaterialStatePropertyAll(
+                              EdgeInsets.symmetric(
+                                  horizontal: 30, vertical: 10),
+                            ),
+                          ),
+                          child: Text(
+                            'Submit',
+                            style: TextStyle(fontSize: 25, color: textColorBtn),
+                          ),
+                        ),
+                      ],
+                    )),
                 const SizedBox(height: 20),
               ],
             ),
