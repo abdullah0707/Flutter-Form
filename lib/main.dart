@@ -39,7 +39,6 @@ class _MyHomePageState extends State<MyHomePage> {
       if (value != null) {
         if (kDebugMode) {
           print(value);
-          print(value);
         }
       } else {
         return;
