@@ -9,9 +9,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
+      // home: const MyHomePage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const MyHomePage(),
+        '/screen1': (context) => const Screen1(),
+        '/screen2': (context) => const Screen2(),
+      },
     );
   }
 }
@@ -20,13 +26,12 @@ class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
 
   void selectScreen(BuildContext ctx, index) {
-    Navigator.of(ctx).push(
-      MaterialPageRoute(
-        builder: (_) {
-          if (index == 1) return const Screen1();
-          return const Screen2();
-        },
-      ),
+    Navigator.of(ctx).pushNamed(
+      '/screen$index',
+      arguments: {
+        'id': 10,
+        'titel': "info",
+      },
     );
   }
 
