@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'drawer.dart';
+
 class Screen2 extends StatelessWidget {
   // final String str2;
   // const Screen2(this.str2, {super.key});
@@ -8,10 +10,10 @@ class Screen2 extends StatelessWidget {
   void selectScreen(BuildContext ctx) {
     Navigator.of(ctx).pushReplacementNamed(
       '/screen1',
-      arguments: {
-        'id': 10,
-        'titel': "info",
-      },
+      // arguments: {
+      //   'id': 10,
+      //   'titel': "info",
+      // },
     );
   }
 
@@ -24,10 +26,6 @@ class Screen2 extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            const Text(
-              "",
-              style: TextStyle(fontSize: 35),
-            ),
             InkWell(
               onTap: () => selectScreen(context),
               child: const Text(
@@ -38,6 +36,7 @@ class Screen2 extends StatelessWidget {
           ],
         ),
       ),
+      drawer: const MyDrawer(),
     );
   }
 }

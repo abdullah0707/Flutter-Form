@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'drawer.dart';
 
 class Screen1 extends StatelessWidget {
   // final String str1;
@@ -12,8 +13,8 @@ class Screen1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final routeArg =
-        ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
+    // final routeArg =
+    //     ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
 
     return Scaffold(
       appBar: AppBar(
@@ -22,14 +23,14 @@ class Screen1 extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            Text(
-              "${routeArg['id']}",
-              style: const TextStyle(fontSize: 35),
-            ),
-            Text(
-              "${routeArg['titel']}",
-              style: const TextStyle(fontSize: 35),
-            ),
+            // Text(
+            //   "${routeArg['id']}",
+            //   style: const TextStyle(fontSize: 35),
+            // ),
+            // Text(
+            //   "${routeArg['titel']}",
+            //   style: const TextStyle(fontSize: 35),
+            // ),
             InkWell(
               onTap: () => selectScreen(context),
               child: const Text(
@@ -40,6 +41,7 @@ class Screen1 extends StatelessWidget {
           ],
         ),
       ),
+      drawer: const MyDrawer(),
     );
   }
 }
