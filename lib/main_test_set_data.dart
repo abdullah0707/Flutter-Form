@@ -52,11 +52,11 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   setData() async {
-    SharedPreferences _pref = await SharedPreferences.getInstance();
-    _pref.setString("name", "Abdullah");
-    _pref.setInt("age", 30);
-    _pref.setDouble("height", 179.5);
-    _pref.setBool("developer", true);
-    _pref.setStringList("skills", ["Dart", "Flutter"]);
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.setString("name", "Abdullah");
+    pref.setInt("age", 30);
+    pref.setDouble("height", 179.5);
+    pref.setBool("developer", true);
+    pref.setStringList("skills", ["Dart", "Flutter"]);
   }
 }

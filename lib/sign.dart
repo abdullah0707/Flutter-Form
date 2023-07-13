@@ -39,13 +39,13 @@ class _SingState extends State<Sing> {
               Builder(
                 builder: (ctx) => ElevatedButton(
                   onPressed: () async {
-                    SharedPreferences _prefs =
+                    SharedPreferences prefs =
                         await SharedPreferences.getInstance();
-                    _prefs.setString(
+                    prefs.setString(
                       "email",
                       _emailController.text,
                     );
-                    _prefs.setString(
+                    prefs.setString(
                       "password",
                       _passwordController.text,
                     );

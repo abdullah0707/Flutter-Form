@@ -59,23 +59,23 @@ class _AnotherState extends State<Another> {
   }
 
   deleteData() async {
-    SharedPreferences _pref = await SharedPreferences.getInstance();
-    _pref.remove("name");
-    _pref.remove("age");
-    _pref.remove("height");
-    _pref.remove("developer");
-    _pref.remove("skills");
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.remove("name");
+    pref.remove("age");
+    pref.remove("height");
+    pref.remove("developer");
+    pref.remove("skills");
     print("Done Delete!");
   }
 
   getData() async {
-    SharedPreferences _pref = await SharedPreferences.getInstance();
+    SharedPreferences pref = await SharedPreferences.getInstance();
     setState(() {
-      _name = _pref.getString("name")!;
-      _age = _pref.getInt("age")!;
-      _height = _pref.getDouble("height")!;
-      _developer = _pref.getBool("developer")!;
-      _skills = _pref.getStringList("skills")!;
+      _name = pref.getString("name")!;
+      _age = pref.getInt("age")!;
+      _height = pref.getDouble("height")!;
+      _developer = pref.getBool("developer")!;
+      _skills = pref.getStringList("skills")!;
     });
   }
 }

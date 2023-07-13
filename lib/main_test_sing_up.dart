@@ -5,9 +5,9 @@ import 'sign.dart';
 Future<void> main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  SharedPreferences _prefs = await SharedPreferences.getInstance();
-  var email = _prefs.getString("email");
-  var password = _prefs.getString("password");
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  var email = prefs.getString("email");
+  var password = prefs.getString("password");
 
   runApp(email != null && password != null ? const MyApp() : const Sing());
 }
