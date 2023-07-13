@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+import 'main_test_sing_up.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Sing extends StatefulWidget {
