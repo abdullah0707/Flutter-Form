@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'another.dart';
+import 'sign.dart';
 
-void main(List<String> args) => runApp(const MyApp());
+Future<void> main(List<String> args) async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  SharedPreferences _prefs = await SharedPreferences.getInstance();
+  var email = _prefs.getString("email");
+  var password = _prefs.getString("password");
+
+  runApp(email != null && password != null ? const MyApp() : const Sing());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -25,38 +33,14 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   @override
-  void initState() {
-    super.initState();
-    setData();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Hello"),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () => Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (_) => const Another())),
-              child: const Text('Go To Another Screen'),
-            )
-          ],
-        ),
+      body: const Center(
+        child: Text("Home page"),
       ),
     );
-  }
-
-  setData() async {
-    SharedPreferences _pref = await SharedPreferences.getInstance();
-    _pref.setString("name", "Abdullah");
-    _pref.setInt("age", 30);
-    _pref.setDouble("height", 179.5);
-    _pref.setBool("developer", true);
-    _pref.setStringList("skills", ["Dart", "Flutter"]);
   }
 }
