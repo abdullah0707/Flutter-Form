@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'another.dart';
 
 void main(List<String> args) => runApp(const MyApp());
 
@@ -23,39 +24,39 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  _launchURL() async {
-    String url = "https://youtu.be/tz4CRIquGLs";
-    Uri ssUrl = Uri.parse(url);
-    await canLaunchUrl(ssUrl)
-        ? await launchUrl(ssUrl)
-        : debugPrint('Could not launch $ssUrl');
+  @override
+  void initState() {
+    super.initState();
+    setData();
   }
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
-      stream: Stream.periodic(const Duration(seconds: 1), (a) => (a)),
-      builder: (ctx, snapshot) {
-        return Scaffold(
-          appBar: AppBar(
-            title: const Text("Hello"),
-          ),
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Center(
-                child: snapshot.connectionState == ConnectionState.waiting
-                    ? const CircularProgressIndicator()
-                    : const Text('Done !'),
-              ),
-              ElevatedButton(
-                onPressed: _launchURL,
-                child: const Text('Launch Url'),
-              )
-            ],
-          ),
-        );
-      },
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Hello"),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () => Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (_) => const Another())),
+              child: const Text('Go To Another Screen'),
+            )
+          ],
+        ),
+      ),
     );
+  }
+
+  setData() async {
+    SharedPreferences _pref = await SharedPreferences.getInstance();
+    _pref.setString("name", "Abdullah");
+    _pref.setInt("age", 30);
+    _pref.setDouble("height", 179.5);
+    _pref.setBool("developer", true);
+    _pref.setStringList("skills", ["Dart", "Flutter"]);
   }
 }
